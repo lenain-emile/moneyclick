@@ -286,7 +286,7 @@
       width: 100px;
       height: 150px;
       position: absolute;
-      bottom: 50px; /* Stands on floor */
+      bottom: 50px; 
       left: 300px;
       transform: scaleX(1);
       z-index: 10;
@@ -350,7 +350,6 @@
       font-size: 16px;
     }
 
-    /* Time of day effects */
     .day-night-cycle {
       position: absolute;
       top: 0;

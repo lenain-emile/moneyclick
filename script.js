@@ -13,7 +13,7 @@ function setupCriptoClicker() {
         // Joue le son situé dans le dossier "media"
         let audio = new Audio('media/mario.mp3');
         audio.play();
-        cripto++;
+        cripto+= 1; // Incrémente la valeur de 1 BTC chaque fois que le bouton est cliqué
 
         //affichage la valeur dans la div
         document.getElementById('cripto').innerHTML = cripto + " BTC";
@@ -28,7 +28,7 @@ setupCriptoClicker();
 
 function passivIncome() {
     setInterval(() => {
-        cripto++;
+        cripto+=1;
         
         // Mise à jour de l'affichage
         document.getElementById('cripto').innerHTML = cripto + " BTC";
@@ -45,8 +45,50 @@ function resetCounter() {
     document.getElementById('reset').addEventListener('click', function() {
         localStorage.clear();
         location.reload();
-        alert('Le compteur a été réinitialisé !');
+       
     });
 }
 
 resetCounter();
+
+
+
+function setupBoost(boostId, threshold, reward) {
+    const boostButton = document.getElementById(boostId);
+    const boostUsedKey = boostId + '_used';
+
+    // Masquer ou afficher selon cripto et si déjà utilisé
+    function updateButton() {
+        const boostUsed = localStorage.getItem(boostUsedKey) === 'true';
+        if (!boostUsed && cripto >= threshold) {
+            boostButton.style.display = 'block';
+        } else {
+            boostButton.style.display = 'none';
+        }
+    }
+
+    // Action du boost
+    boostButton.addEventListener('click', function() {
+        if (localStorage.getItem(boostUsedKey) === 'true') return;
+
+        cripto += reward;
+        document.getElementById('cripto').innerHTML = cripto + " BTC";
+        localStorage.setItem('cripto', cripto);
+        localStorage.setItem(boostUsedKey, 'true');
+        boostButton.style.display = 'none';
+    });
+
+    // Vérifier régulièrement
+    setInterval(updateButton, 1000);
+    updateButton(); // appel initial
+}
+
+// Appelle cette fonction pour chaque palier
+setupBoost('boost10', 10, 50);
+setupBoost('boost50', 100, 150);
+setupBoost('boost300', 300, 50);
+setupBoost('boost100', 600, 200);
+
+boostCripto100();
+
+

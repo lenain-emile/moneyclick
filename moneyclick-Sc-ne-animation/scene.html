@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> Les Clickes </title>
+  <script src="./bitcoin.js" defer></script>
+  <script src="./script.js" defer></script>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style/btc.css">
+  
+</head>
+<body>
+  <div id="customModal" style="display:none;">
+    <div class="modal-content">
+      <p>Boutique</p>
+      <button onclick="closeModal()">Fermer</button>
+    </div>
+  </div>
+  
+
+
+  <img id="reset" src="./media/boutonreset.png" alt="BTC Icon">
+  <div id="boite">
+
+    <div id="cripto"></div>
+    <button id="button">
+      <img src="./media/coin.png" alt="BTC Icon">
+    </button>
+    
+    <div id="boost">
+      <img id="boost10" src="./media/eclair.png" alt="Boost 10">
+      <img id="boost50" src="./media/eclair.png" alt="Boost 50">
+      <img id="boost100" src="./media/eclair.png" alt="Boost 100">
+      <img id="boost300" src="./media/eclair.png" alt="Boost 300">
+    </div>
+    
+    </div>
+
+  <div id="gameArea">
+    <div class="wall"></div>
+    <div class="wall-trim"></div>
+    <div class="ceiling-light"></div>
+    
+    <div class="window">
+      <div class="window-frame-h"></div>
+      <div class="window-frame-v"></div>
+      <div class="curtain-left"></div>
+      <div class="curtain-right"></div>
+    </div>
+    
+    <div class="bed">
+      <div class="pillow"></div>
+      <div class="blanket"></div>
+    </div>
+    
+    <div class="nightstand">
+      <div class="lamp">
+        <div class="lamp-base"></div>
+        <div class="lamp-shade"></div>
+      </div>
+    </div>
+    
+    <div class="dresser">
+      <div class="drawer"><div class="drawer-handle"></div></div>
+      <div class="drawer"><div class="drawer-handle"></div></div>
+      <div class="drawer"><div class="drawer-handle"></div></div>
+    </div>
+    
+    <div class="picture-frame"></div>
+    <div class="rug"></div>
+    
+    <div class="character-shadow"></div>
+    <div id="character">
+      <img src="./Can_You_Guess_These_Cartoon_Characters_By_Their_Outlines-removebg-preview.png" alt="Character">
+    </div>
+    
+    <div id="floor"></div>
+    <div class="day-night-cycle"></div>
+  </div>
+
+  <div class="controls">
+    <button id="moveLeft">⬅️ Left</button>
+    <button id="jump"></button>
+    <button id="moveRight">➡️ Right</button>
+  </div>
+  
+  <div class="game-instructions">
+    Use arrow keys to move,or use the buttons
+  </div>
+
+  
+
+</body>
+</html>

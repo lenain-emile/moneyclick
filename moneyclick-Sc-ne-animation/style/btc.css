@@ -1,0 +1,62 @@
+
+
+#button img {
+    display: block; /* enlève l’espace blanc dessous l’image */
+}
+
+#button {
+    all: unset;
+    cursor: pointer;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-15px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    70% {
+        transform: translateY(-7px);
+    }
+}
+
+#reset {
+    position: fixed;
+    top: 15px; /* Monte l'élément de 5 pixels */
+    right: 80px; /* Ajuste pour être moins à droite */
+    width: 50px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+
+
+
+#cripto {
+    position: fixed;
+    top: 20px; /* Monte l'élément de 10 pixels en ajustant la valeur */
+    right: 200px; /* Ajuste selon l'espacement désiré par rapport au bord droit */
+    z-index: 999;
+    font-size: large;
+    color: rgba(240, 53, 11, 0.818);
+    background-color: white; /* Ajoute un fond blanc */
+    padding: 10px; /* Ajoute un peu d'espace autour du texte */
+    border-radius: 5px; /* Arrondit légèrement les coins */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une ombre subtile */
+}
+
+#boost {
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+

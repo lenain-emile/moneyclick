@@ -1,4 +1,11 @@
 let cripto = parseInt(localStorage.getItem('cripto')) || 0;
+let usd = parseInt(localStorage.getItem('usd')) || 0;
+
+let clickGain = parseInt(localStorage.getItem('clickGain')) || 1;
+let passiveGain = parseInt(localStorage.getItem('passiveGain')) || 1;
+let lastMilestone = parseInt(localStorage.getItem('lastMilestone')) || 0;
+
+let passiveIncomeStarted = false;
 
 function setupCriptoClicker() {
     document.getElementById('cripto').innerHTML = cripto + " BTC";
@@ -7,48 +14,36 @@ function setupCriptoClicker() {
         let audio = new Audio('media/mario.mp3');
         audio.play();
 
-        cripto += 1;
-
+        cripto += clickGain;
         document.getElementById('cripto').innerHTML = cripto + " BTC";
         localStorage.setItem('cripto', cripto);
 
-        checkPassiveButtonVisibility(); //  mise à jour de la visibilité du bouton
+        checkPassiveButtonVisibility();
+        checkForMilestone();
     });
 }
-
-setupCriptoClicker();
-
-//  Flag pour éviter de lancer plusieurs fois le revenu passif
-let passiveIncomeStarted = false;
 
 function passivIncome() {
     if (passiveIncomeStarted) return;
     passiveIncomeStarted = true;
 
     setInterval(() => {
-        cripto += 1;
-
+        cripto += passiveGain;
         document.getElementById('cripto').innerHTML = cripto + " BTC";
         localStorage.setItem('cripto', cripto);
-
-        checkPassiveButtonVisibility(); //  encore ici pour mettre à jour si jamais
+        checkPassiveButtonVisibility();
+        checkForMilestone();
     }, 1000);
 }
 
-//  Attacher le lancement du revenu passif au clic sur le bouton
-document.getElementById('passiveBtn').addEventListener('click', passivIncome);
-
 function checkPassiveButtonVisibility() {
     const passiveBtn = document.getElementById('passiveBtn');
-    if (cripto >= 10) { // 
+    if (cripto >= 10) {
         passiveBtn.style.display = 'block';
     } else {
         passiveBtn.style.display = 'none';
     }
 }
-
-//  Appel initial pour que le bouton apparaisse si cripto déjà assez élevé
-checkPassiveButtonVisibility();
 
 function resetCounter() {
     document.getElementById('reset').addEventListener('click', function () {
@@ -56,8 +51,6 @@ function resetCounter() {
         location.reload();
     });
 }
-
-resetCounter();
 
 function setupBoost(boostId, threshold, reward) {
     const boostButton = document.getElementById(boostId);
@@ -80,21 +73,12 @@ function setupBoost(boostId, threshold, reward) {
         localStorage.setItem('cripto', cripto);
         localStorage.setItem(boostUsedKey, 'true');
         boostButton.style.display = 'none';
-
-        checkPassiveButtonVisibility(); // 
+        checkPassiveButtonVisibility();
     });
 
     setInterval(updateButton, 1000);
     updateButton();
 }
-
-setupBoost('boost10', 50, 50);
-setupBoost('boost50', 300, 50);
-setupBoost('boost300', 500, 50);
-setupBoost('boost100', 800, 200);
-
-
-let usd = parseInt(localStorage.getItem('usd')) || 0;
 
 function setupExchange() {
     const exchangeBtn = document.getElementById('exchangeBtn');
@@ -108,26 +92,56 @@ function setupExchange() {
             cripto -= 200;
             usd += 50;
 
-            // Mise à jour affichage
             document.getElementById('cripto').innerHTML = cripto + " BTC";
             usdDisplay.innerHTML = usd + " € <span id='usdGain' class='gain-animation'>+50 €</span>";
             localStorage.setItem('cripto', cripto);
             localStorage.setItem('usd', usd);
 
-            // Animation
             const gainEl = document.getElementById('usdGain');
             gainEl.classList.add('show');
 
-            // Enlève l'animation après un petit délai
             setTimeout(() => {
                 gainEl.classList.remove('show');
             }, 800);
 
             checkPassiveButtonVisibility();
         } else {
-            alert("⛔ Pas assez de BTC pour échanger !");
+            alert("⛔ Vous devez avoir au moins 200 BTC pour échanger !");
         }
     });
 }
 
+function checkForMilestone() {
+    if (cripto >= lastMilestone + 500) {
+        lastMilestone += 500;
+        localStorage.setItem('lastMilestone', lastMilestone);
+        document.getElementById('milestoneCripto').textContent = lastMilestone;
+        document.getElementById('bonusModal').style.display = 'flex';
+    }
+}
+
+function setupBonusModal() {
+    document.getElementById('doubleClickGain').addEventListener('click', function () {
+        clickGain *= 2;
+        localStorage.setItem('clickGain', clickGain);
+        document.getElementById('bonusModal').style.display = 'none';
+    });
+
+    document.getElementById('doublePassiveIncome').addEventListener('click', function () {
+        passiveGain *= 2;
+        localStorage.setItem('passiveGain', passiveGain);
+        document.getElementById('bonusModal').style.display = 'none';
+    });
+}
+
+// Init
+setupCriptoClicker();
+document.getElementById('passiveBtn').addEventListener('click', passivIncome);
+checkPassiveButtonVisibility();
+resetCounter();
+setupBoost('boost10', 50, 50);
+setupBoost('boost50', 300, 50);
+setupBoost('boost300', 500, 50);
+setupBoost('boost100', 800, 200);
 setupExchange();
+setupBonusModal();

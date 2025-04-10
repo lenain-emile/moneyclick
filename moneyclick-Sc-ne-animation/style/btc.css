@@ -116,8 +116,8 @@
 #exchangeBtn {
     all: unset;
     position: fixed;
-    top: 90px;
-    left: 80px;
+    top: 200px;
+    left: 100px;
     z-index: 1000;
     cursor: pointer;
     border: 2px solid rgba(0, 123, 255, 0.8); /* Ajoute une bordure bleue */
@@ -133,4 +133,40 @@
     background-color: rgba(0, 123, 255, 0.2); /* Change le fond au survol */
     border-color: rgba(0, 123, 255, 1); /* Accentue la bordure au survol */
     color: white; /* Change la couleur du texte au survol */
+}
+
+#passiveBtn{
+    all: unset;
+    border: 2px solid rgba(0, 123, 255, 0.8); /* Ajoute une bordure bleue */
+    border-radius: 5px; /* Arrondit légèrement les coins */
+    padding: 5px 10px; /* Ajoute un peu d'espace intérieur */
+    background-color: rgba(0, 123, 255, 0.1); /* Ajoute un fond légèrement bleu */
+    color: rgba(0, 123, 255, 1); /* Définit la couleur du texte */
+    font-size: x-large; /* Définit une taille de texte extra large */
+    transition: all 0.3s ease; /* Ajoute une transition pour les effets */
+    position: relative;
+    top: -30px; /* Monte le bouton de 30 pixels */
+}
+
+#passiveBtn:hover {
+    background-color: rgba(0, 123, 255, 0.2); /* Change le fond au survol */
+    border-color: rgba(0, 123, 255, 1); /* Accentue la bordure au survol */
+    color: white; /* Change la couleur du texte au survol */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
 }

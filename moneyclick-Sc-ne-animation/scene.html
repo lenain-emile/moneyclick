@@ -12,7 +12,9 @@
 </head>
 <body>
   
-  <button id="passiveBtn" style="display: none;">Activer revenu passif</button>
+  <button id="passiveBtn" style="display: none;">
+    <p>Revenu passif</p>
+  </button>
 
 
 
@@ -87,6 +89,13 @@
   <div class="game-instructions">
     Utilisez les flèches directionnelles pour vous déplacer
   </div>
+  <div id="bonusModal" class="modal">
+    <div class="modal-content">
+        <p>🎁 Félicitations ! Vous avez atteint <span id="milestoneCripto"></span> BTC ! Choisissez une récompense :</p>
+        <button id="doubleClickGain">🔁 Doubler le gain par clic</button>
+        <button id="doublePassiveIncome">🕒 Doubler le revenu passif</button>
+    </div>
+</div>
 
   <div id="dresserPopup" class="popup">
     <h2>Commode</h2>

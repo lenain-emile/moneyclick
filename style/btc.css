@@ -1,0 +1,65 @@
+
+
+#button img {
+    display: block; /* enlève l’espace blanc dessous l’image */
+}
+
+#button {
+    all: unset;
+    cursor: pointer;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-15px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    70% {
+        transform: translateY(-7px);
+    }
+}
+
+#reset {
+    position: fixed;
+    top: 100px;
+    right: 200px;
+    width: 50px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+
+
+
+#cripto {
+    position: fixed;
+    top: 50px; /* Monte l'élément en ajustant la valeur */
+    right: 200px; /* Ajuste selon l'espacement désiré par rapport au bord droit */
+    z-index: 999;
+    font-size: large;
+    color: rgb(240, 5, 5);
+}
+
+#boost {
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+
+#button {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}

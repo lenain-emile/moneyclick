@@ -72,7 +72,7 @@
 
 #button {
     position: fixed;
-    top: 40%; /* Remonte légèrement */
+    top: 50%; /* Remonte légèrement */
     left: 180px; /* Décale vers la droite de 50px */
     transform: translateY(-50%); /* Ajuste pour centrer parfaitement */
     z-index: 1000;
@@ -91,7 +91,7 @@
 #usd {
     position: fixed;
     top: 60px; /* Positionne en dessous de l'ID sous */
-    right: 300px; /* Décale davantage vers la gauche */
+    right: 350px; /* Décale davantage vers la gauche */
     z-index: 999;
     font-size: large;
     color: rgba(240, 240, 11, 0.818);
@@ -113,3 +113,24 @@
     font-size: 18px;
   }
 
+#exchangeBtn {
+    all: unset;
+    position: fixed;
+    top: 90px;
+    left: 80px;
+    z-index: 1000;
+    cursor: pointer;
+    border: 2px solid rgba(0, 123, 255, 0.8); /* Ajoute une bordure bleue */
+    border-radius: 5px; /* Arrondit légèrement les coins */
+    padding: 5px 10px; /* Ajoute un peu d'espace intérieur */
+    background-color: rgba(0, 123, 255, 0.1); /* Ajoute un fond légèrement bleu */
+    color: rgba(0, 123, 255, 1); /* Définit la couleur du texte */
+    font-size: 14px; /* Ajuste la taille du texte */
+    transition: all 0.3s ease; /* Ajoute une transition pour les effets */
+}
+
+#exchangeBtn:hover {
+    background-color: rgba(0, 123, 255, 0.2); /* Change le fond au survol */
+    border-color: rgba(0, 123, 255, 1); /* Accentue la bordure au survol */
+    color: white; /* Change la couleur du texte au survol */
+}

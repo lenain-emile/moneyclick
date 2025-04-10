@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Les Clickes</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+
+
+</head>
+<body>
+
+  <div id="gameArea">
+    <div class="wall"></div>
+    <div class="wall-trim"></div>
+    <div class="ceiling-light"></div>
+    
+    <div class="window">
+      <div class="window-frame-h"></div>
+      <div class="window-frame-v"></div>
+      <div class="curtain-left"></div>
+      <div class="curtain-right"></div>
+    </div>
+    
+    <div class="bed interactive">
+      <div class="pillow"></div>
+      <div class="blanket"></div>
+    </div>
+    
+    <div class="nightstand">
+      <div class="lamp">
+        <div class="lamp-base"></div>
+        <div class="lamp-shade"></div>
+      </div>
+    </div>
+    
+    <div class="dresser interactive">
+      <div class="drawer"><div class="drawer-handle"></div></div>
+      <div class="drawer"><div class="drawer-handle"></div></div>
+      <div class="drawer"><div class="drawer-handle"></div></div>
+    </div>
+    
+    <div class="picture-frame"></div>
+    <div class="rug"></div>
+    
+    <div class="character-shadow"></div>
+    <div id="character">
+      <img src="./Can_You_Guess_These_Cartoon_Characters_By_Their_Outlines-removebg-preview.png" alt="Character">
+    </div>
+    
+    <div id="floor"></div>
+    <div class="day-night-cycle"></div>
+    
+    <div class="music-controls">
+      <button id="musicToggle" class="music-btn">♪</button>
+      <span class="music-info">Music: On</span>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="moveLeft">⬅️ Left</button>
+    <button id="jump">⬆️ Jump</button>
+    <button id="moveRight">➡️ Right</button>
+  </div>
+  
+  <div class="game-instructions">
+    Use arrow keys to move, or use the buttons. Walk to the bed or dresser for interactions.
+  </div>
+
+  <div id="dresserPopup" class="popup">
+    <h2>Dresser</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores optio iste ipsam deserunt, dolorum repellat quaerat omnis fugit velit odit expedita aliquid quidem illo officiis libero, deleniti impedit quo rem!</p>
+    <button class="popup-close" onclick="closePopup('dresserPopup')">Take Key</button>
+  </div>
+  
+  <div id="bedPopup" class="popup">
+    <h2>Comfortable Bed</h2>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus corrupti doloremque sint accusantium voluptates. Labore ad modi animi error ratione sunt fugit ab numquam, placeat exercitationem. Totam repellat excepturi labore.
+    </p>
+    <button class="popup-close" onclick="closePopup('bedPopup')">Maybe Later</button>
+  </div>
+
+  <audio id="backgroundMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  
+  <audio id="interactionSound">
+    <source src="https://cdn.freesound.org/previews/524/524934_7724898-lq.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  
+</body>
+</html>

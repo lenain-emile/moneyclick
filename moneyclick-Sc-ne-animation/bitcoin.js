@@ -52,12 +52,14 @@ function resetCounter() {
     });
 }
 
-function setupBoost(boostId, threshold, reward) {
+function setupBoost(boostId, threshold, reward, boostMultiplier = 1) {
     const boostButton = document.getElementById(boostId);
     const boostUsedKey = boostId + '_used';
+    const boostRewardKey = boostId + '_reward';
 
     function updateButton() {
         const boostUsed = localStorage.getItem(boostUsedKey) === 'true';
+        const currentReward = parseInt(localStorage.getItem(boostRewardKey)) || reward;
         if (!boostUsed && cripto >= threshold) {
             boostButton.style.display = 'block';
         } else {
@@ -68,7 +70,13 @@ function setupBoost(boostId, threshold, reward) {
     boostButton.addEventListener('click', function () {
         if (localStorage.getItem(boostUsedKey) === 'true') return;
 
-        cripto += reward;
+        let currentReward = parseInt(localStorage.getItem(boostRewardKey)) || reward;
+        cripto += currentReward;
+
+        // Augmenter la récompense pour le prochain palier
+        currentReward *= boostMultiplier;
+        localStorage.setItem(boostRewardKey, currentReward);  // Sauvegarder la nouvelle récompense
+
         document.getElementById('cripto').innerHTML = cripto + " BTC";
         localStorage.setItem('cripto', cripto);
         localStorage.setItem(boostUsedKey, 'true');
@@ -122,26 +130,28 @@ function checkForMilestone() {
 
 function setupBonusModal() {
     document.getElementById('doubleClickGain').addEventListener('click', function () {
-        clickGain *= 2;
+        clickGain += 0.5; // Augmenter le gain de clic de 0.5 au lieu de 1
         localStorage.setItem('clickGain', clickGain);
         document.getElementById('bonusModal').style.display = 'none';
     });
 
     document.getElementById('doublePassiveIncome').addEventListener('click', function () {
-        passiveGain *= 2;
+        passiveGain += 0.5; // Augmenter le gain passif de 0.5 au lieu de 1
         localStorage.setItem('passiveGain', passiveGain);
         document.getElementById('bonusModal').style.display = 'none';
     });
 }
+
 
 // Init
 setupCriptoClicker();
 document.getElementById('passiveBtn').addEventListener('click', passivIncome);
 checkPassiveButtonVisibility();
 resetCounter();
-setupBoost('boost10', 50, 50);
-setupBoost('boost50', 300, 50);
-setupBoost('boost300', 500, 50);
-setupBoost('boost100', 800, 200);
+setupBoost('boost10', 50, 50, 2); // Le boost à 50 BTC augmente à chaque utilisation (multiplicateur de 2)
+setupBoost('boost50', 300, 50, 1.5); // Le boost à 50 BTC augmente à chaque utilisation (multiplicateur de 1.5)
+setupBoost('boost300', 500, 50, 1.2); // Le boost à 50 BTC augmente à chaque utilisation (multiplicateur de 1.2)
+setupBoost('boost100', 800, 200, 1.3); // Le boost à 200 BTC augmente à chaque utilisation (multiplicateur de 1.3)
+
 setupExchange();
 setupBonusModal();

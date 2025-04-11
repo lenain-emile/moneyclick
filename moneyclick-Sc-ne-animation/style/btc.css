@@ -127,6 +127,7 @@
     color: rgba(0, 123, 255, 1); /* Définit la couleur du texte */
     font-size: 14px; /* Ajuste la taille du texte */
     transition: all 0.3s ease; /* Ajoute une transition pour les effets */
+    top: 100px; /* Descend le bouton de 100 pixels */
 }
 
 #exchangeBtn:hover {

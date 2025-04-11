@@ -1,0 +1,174 @@
+
+
+#button img {
+    display: block; /* enlève l’espace blanc dessous l’image */
+}
+
+#button {
+    all: unset;
+    cursor: pointer;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-15px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    70% {
+        transform: translateY(-7px);
+    }
+}
+
+#reset {
+    position: fixed;
+    top: 15px; /* Monte l'élément de 5 pixels */
+    right: 80px; /* Ajuste pour être moins à droite */
+    width: 50px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+
+
+
+#cripto {
+    position: fixed;
+    top: 20px; /* Monte l'élément de 10 pixels en ajustant la valeur */
+    right: 200px; /* Ajuste selon l'espacement désiré par rapport au bord droit */
+    z-index: 999;
+    font-size: large;
+    color: rgba(240, 53, 11, 0.818);
+    background-color: white; /* Ajoute un fond blanc */
+    padding: 10px; /* Ajoute un peu d'espace autour du texte */
+    border-radius: 5px; /* Arrondit légèrement les coins */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une ombre subtile */
+}
+
+#boost {
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+
+
+#euro {
+    position: fixed;
+    top: 60px; /* Positionne en dessous de l'ID usd */
+    right: 300px; /* Aligne avec l'ID usd */
+    z-index: 999;
+    font-size: large;
+    color: rgba(11, 240, 53, 0.818);
+}
+
+#button {
+    position: fixed;
+    top: 50%; /* Remonte légèrement */
+    left: 180px; /* Décale vers la droite de 50px */
+    transform: translateY(-50%); /* Ajuste pour centrer parfaitement */
+    z-index: 1000;
+}
+
+
+#sous {
+    position: fixed;
+    top: 20px; /* Aligne avec l'ID cripto */
+    right: 400px; /* Décale davantage vers la gauche */
+    z-index: 999;
+    font-size: large;
+    color: rgba(53, 11, 240, 0.818);
+    margin-right: 20px; /* Décale légèrement vers la gauche */
+    margin-left: 20px; /* Décale légèrement vers la gauche */
+}
+
+#usd {
+    position: fixed;
+    top: 60px; /* Positionne en dessous de l'ID sous */
+    right: 450px; /* Décale davantage vers la gauche */
+    z-index: 999;
+    font-size: large;
+    color: rgba(240, 240, 11, 0.818);
+}
+
+
+
+  .gain-animation {
+    position: relative;
+    color: green;
+    font-weight: bold;
+    opacity: 0;
+    transition: all 0.8s ease-out;
+  }
+
+  .gain-animation.show {
+    opacity: 1;
+    top: -20px;
+    font-size: 18px;
+  }
+
+#exchangeBtn {
+    all: unset;
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    z-index: 1000;
+    cursor: pointer;
+    border: 2px solid rgba(0, 123, 255, 0.8); /* Ajoute une bordure bleue */
+    border-radius: 5px; /* Arrondit légèrement les coins */
+    padding: 5px 10px; /* Ajoute un peu d'espace intérieur */
+    background-color: rgba(0, 123, 255, 0.1); /* Ajoute un fond légèrement bleu */
+    color: rgba(0, 123, 255, 1); /* Définit la couleur du texte */
+    font-size: 14px; /* Ajuste la taille du texte */
+    transition: all 0.3s ease; /* Ajoute une transition pour les effets */
+}
+
+#exchangeBtn:hover {
+    background-color: rgba(0, 123, 255, 0.2); /* Change le fond au survol */
+    border-color: rgba(0, 123, 255, 1); /* Accentue la bordure au survol */
+    color: white; /* Change la couleur du texte au survol */
+}
+
+#passiveBtn{
+    all: unset;
+    border: 2px solid rgba(0, 123, 255, 0.8); /* Ajoute une bordure bleue */
+    border-radius: 5px; /* Arrondit légèrement les coins */
+    padding: 5px 10px; /* Ajoute un peu d'espace intérieur */
+    background-color: rgba(0, 123, 255, 0.1); /* Ajoute un fond légèrement bleu */
+    color: rgba(0, 123, 255, 1); /* Définit la couleur du texte */
+    font-size: x-large; /* Définit une taille de texte extra large */
+    transition: all 0.3s ease; /* Ajoute une transition pour les effets */
+    position: relative;
+    top: -30px; /* Monte le bouton de 30 pixels */
+}
+
+#passiveBtn:hover {
+    background-color: rgba(0, 123, 255, 0.2); /* Change le fond au survol */
+    border-color: rgba(0, 123, 255, 1); /* Accentue la bordure au survol */
+    color: white; /* Change la couleur du texte au survol */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal-content {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}

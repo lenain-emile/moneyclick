@@ -1,0 +1,522 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  background-color: #121212;
+}
+
+#gameArea {
+  width: 90%;
+  height: 450px;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+.wall {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 75%;
+  background: linear-gradient(to bottom, #e8dfd5, #d7cdc0);
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none" stroke="%23e0d9cf" stroke-width="0.5"/></svg>');
+  box-shadow: inset 0 -10px 15px -10px rgba(0, 0, 0, 0.3);
+}
+
+.wall-trim {
+  position: absolute;
+  top: 75%;
+  width: 100%;
+  height: 12px;
+  background-color: #9e8a73;
+  z-index: 2;
+}
+
+.ceiling-light {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 20px;
+  background-color: #f8f8e8;
+  border-radius: 10px;
+  box-shadow: 0 0 50px 30px rgba(255, 253, 240, 0.4);
+  z-index: 1;
+}
+
+.window {
+  position: absolute;
+  top: 50px;
+  right: 120px;
+  width: 150px;
+  height: 130px;
+  background: linear-gradient(to bottom, #a7c8e6, #c7e6ff);
+  border: 8px solid #7a5c47;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.5), 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.window-frame-h {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background-color: #7a5c47;
+  transform: translateY(-50%);
+}
+
+.window-frame-v {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 6px;
+  height: 100%;
+  background-color: #7a5c47;
+  transform: translateX(-50%);
+}
+
+.curtain-left, .curtain-right {
+  position: absolute;
+  top: -10px;
+  width: 40px;
+  height: 150px;
+  background: linear-gradient(to right, #b86b77, #d38d96);
+  border-radius: 0 0 20px 20px;
+  z-index: 3;
+}
+
+.curtain-left {
+  left: -10px;
+}
+
+.curtain-right {
+  right: -10px;
+}
+
+.bed {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  width: 220px;
+  height: 120px;
+  background: linear-gradient(to bottom, #6b8e23, #5a7a1e);
+  border-radius: 10px 10px 0 0;
+  border: 6px solid #5a4d41;
+  border-bottom: none;
+  box-shadow: 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+  z-index: 4;
+}
+
+.bed:after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: -6px;
+  width: 232px;
+  height: 20px;
+  background-color: #704834;
+  border-radius: 0 0 10px 10px;
+}
+
+.pillow {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  width: 60px;
+  height: 40px;
+  background: linear-gradient(to bottom right, #f0f0f0, #e0e0e0);
+  border-radius: 10px;
+  transform: perspective(200px) rotateX(10deg);
+  box-shadow: -2px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.blanket {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  width: 140px;
+  height: 80px;
+  background: linear-gradient(45deg, #964B00, #b25900);
+  border-radius: 10px;
+  transform: perspective(200px) rotateX(5deg) skewX(-5deg);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+#bed .pillow,
+#bed .blanket {
+  pointer-events: none;
+}
+
+
+.nightstand {
+  position: absolute;
+  bottom: 50px;
+  right: 290px;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(to bottom, #8B4513, #6e3811);
+  border: 2px solid #5a3a28;
+  z-index: 3;
+}
+
+.lamp {
+  position: absolute;
+  top: -50px;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.lamp-base {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 30px;
+  background: linear-gradient(to right, #a67c52, #8B4513);
+  border-radius: 3px;
+}
+
+.lamp-shade {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 25px;
+  background-color: #f8e9d6;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 0 20px 5px rgba(255, 223, 158, 0.3);
+}
+
+.dresser {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  width: 160px;
+  height: 130px;
+  background: linear-gradient(to bottom, #8B4513, #6e3811);
+  border: 3px solid #5a3a28;
+  z-index: 3;
+  cursor: pointer;
+  background-image: url('path/to/your/image.jpg'); 
+  background-size: cover;
+  background-position: center;
+}
+
+.dresser:hover {
+  filter: brightness(1.2); 
+}
+
+.drawer {
+  position: absolute;
+  width: 140px;
+  height: 35px;
+  left: 10px;
+  background: linear-gradient(to bottom, #7a4012, #5e3010);
+  border: 1px solid #4a2a1e;
+}
+
+.drawer:nth-child(1) {
+  top: 15px;
+}
+
+.drawer:nth-child(2) {
+  top: 55px;
+}
+
+.drawer:nth-child(3) {
+  top: 95px;
+}
+
+.drawer-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 5px;
+  background-color: #d0af84;
+  border-radius: 5px;
+}
+/*.rug {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 150px;
+  background: radial-gradient(ellipse at center, #d38d96 0%, #963c46 100%);
+  border-radius: 50%;
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+  */
+
+.picture-frame {
+  position: absolute;
+  top: 70px;
+  left: 120px;
+  width: 90px;
+  height: 70px;
+  background-color: #f0e6d8;
+  border: 5px solid #7a5c47;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.picture-frame:after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  background: linear-gradient(135deg, #b3e0ff, #6699cc);
+}
+
+#floor {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25%;
+  background-color: #b8926a;
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="25" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="25" fill="%23b8926a"/><rect width="20" height="25" fill="%23a68057" x="0" y="0"/><rect width="20" height="25" fill="%23c69e76" x="20" y="0"/><rect width="20" height="25" fill="%23b28c66" x="40" y="0"/><rect width="20" height="25" fill="%23c69e76" x="60" y="0"/><rect width="20" height="25" fill="%23a68057" x="80" y="0"/></svg>');
+  background-repeat: repeat;
+  background-size: 100px 25px;
+  z-index: 1;
+}
+
+#character {
+  width: 100px;
+  height: 150px;
+  position: absolute;
+  bottom: 50px; 
+  left: 300px;
+  transform: scaleX(1);
+  z-index: 10;
+  transition: transform 0.1s ease-out;
+  filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.5));
+}
+
+#character img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.character-shadow {
+  position: absolute;
+  bottom: 48px;
+  left: 300px;
+  width: 70px;
+  height: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  filter: blur(4px);
+  z-index: 5;
+  transition: left 0.1s ease-out;
+}
+
+.controls {
+  display: flex;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px 30px;
+  font-size: 18px;
+  border: none;
+  background: linear-gradient(to bottom, #8B4513, #6e3811);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+  background: linear-gradient(to bottom, #a05a20, #7e4213);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.game-instructions {
+  margin-top: 15px;
+  text-align: center;
+  color: #ddcebb;
+  font-size: 16px;
+}
+
+.day-night-cycle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 253, 245, 0.1);
+  pointer-events: none;
+  z-index: 20;
+  mix-blend-mode: overlay;
+}
+
+@keyframes jump {
+  0% { bottom: 50px; }
+  50% { bottom: 100px; }
+  100% { bottom: 50px; }
+}
+
+@keyframes walk {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-2px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+
+.popup {
+  position: absolute;
+  display: none;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background: #fff;
+  width: 300px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  border-radius: 8px;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #6e3811;
+  border-bottom: 2px solid #d0af84;
+  padding-bottom: 8px;
+}
+
+.popup p {
+  margin-bottom: 20px;
+}
+
+.popup-close {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.interactive {
+  cursor: pointer;
+  transition: filter 0.3s ease;
+}
+
+.interactive:hover {
+  filter: brightness(1.2);
+}
+
+.music-controls {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  z-index: 50;
+}
+
+.music-btn {
+  background: rgba(110, 56, 17, 0.7);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.music-btn:hover {
+  background: rgba(160, 90, 32, 0.8);
+  transform: scale(1.1);
+}
+
+.music-info {
+  color: #ddcebb;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.music-controls:hover .music-info {
+  opacity: 1;
+}
+
+#shop {
+  background: #1e1e1e;
+  color: white;
+  border: 2px solid #555;
+  padding: 20px;
+  width: 250px;
+  position: fixed;
+  right: 20px;
+  top: 70px;
+  z-index: 1000;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #000;
+}
+
+#toggleShopBtn {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: #f0c040;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 1000;
+}
+
+.shop-item {
+  margin-bottom: 15px;
+}
+
+.shop-item button {
+  background-color: #4caf50;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.shop-item button:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+

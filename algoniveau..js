@@ -1,15 +1,15 @@
 const level = document.getElementById("level");
 const counterDisplay = document.getElementById("counter");
-const clickButton = document.getElementById("clickButton");
+const clickButton = document.getElementById("bed");
 const resetButton = document.getElementById("resetButton");
-const toast = new bootstrap.Toast(document.getElementById('leveltoast'));
+
 
 let count = parseInt(localStorage.getItem("clickCount")) || 0;
 let clickvalue = parseInt(localStorage.getItem("clickValue")) || 1;
 let nextMilestone = Math.ceil(count / 100) * 100; 
 let levelValue = parseInt(localStorage.getItem("levelValue")) || 1;
 
-counterDisplay.textContent = "Nombre de clics : " + count;
+counterDisplay.textContent = "Nombre d'XP : " + count;
 
 clickButton.addEventListener("click", () => {
   count += clickvalue;
@@ -21,12 +21,11 @@ clickButton.addEventListener("click", () => {
     nextMilestone += 100; 
     localStorage.setItem("clickValue", clickvalue);
     localStorage.setItem("levelValue", levelValue);
-    toast.show();
     
   }
 
   localStorage.setItem("clickCount", count);
-  counterDisplay.textContent = "Nombre de clics : " + count;
+  counterDisplay.textContent = "Nombre d'XP : " + count;
 
 });
 
@@ -34,11 +33,15 @@ clickButton.addEventListener("click", () => {
 resetButton.addEventListener("click", () => {
   count = 0;
   clickvalue = 1;
-  nextMilestone = 100; 
-  levelValue = 0;
+  nextMilestone = 100;
+  levelValue = 1;
+
   localStorage.setItem("clickCount", count);
   localStorage.setItem("clickValue", clickvalue);
-  counterDisplay.textContent = "Nombre de clics : " + count;
+  localStorage.setItem("levelValue", levelValue);
+
+  counterDisplay.textContent = "Nombre d'XP : " + count;
+  level.textContent = "Niveau : " + levelValue;
 });
 
 

@@ -155,3 +155,43 @@ setupBoost('boost100', 800, 200, 1.3); // Le boost à 200 BTC augmente à chaque
 
 setupExchange();
 setupBonusModal();
+
+function setupRealShop() {
+    const openBtn = document.getElementById('openGiftShopBtn');
+    const modal = document.getElementById('giftShopModal');
+    const closeBtn = document.getElementById('closeGiftShopBtn');
+    const inventoryList = document.getElementById('inventoryList');
+    let inventory = JSON.parse(localStorage.getItem('inventory')) || [];
+
+    function updateInventoryDisplay() {
+        inventoryList.innerHTML = '';
+        inventory.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            inventoryList.appendChild(li);
+        });
+    }
+
+    window.buyItem = function(itemName, price) {
+        if (usd >= price) {
+            usd -= price;
+            inventory.push(itemName);
+            localStorage.setItem('usd', usd);
+            localStorage.setItem('inventory', JSON.stringify(inventory));
+            document.getElementById('usd').innerHTML = usd + " €";
+            updateInventoryDisplay();
+            alert(`🎉 Vous avez acheté : ${itemName}`);
+        } else {
+            alert("⛔ Pas assez d'euros !");
+        }
+    };
+
+    openBtn.addEventListener('click', () => modal.style.display = 'flex');
+    closeBtn.addEventListener('click', () => modal.style.display = 'none');
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    });
+
+    updateInventoryDisplay();
+}
+setupRealShop();

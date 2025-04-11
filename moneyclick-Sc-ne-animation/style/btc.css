@@ -82,16 +82,18 @@
 #sous {
     position: fixed;
     top: 20px; /* Aligne avec l'ID cripto */
-    right: 300px; /* Décale davantage vers la gauche */
+    right: 400px; /* Décale davantage vers la gauche */
     z-index: 999;
     font-size: large;
     color: rgba(53, 11, 240, 0.818);
+    margin-right: 20px; /* Décale légèrement vers la gauche */
+    margin-left: 20px; /* Décale légèrement vers la gauche */
 }
 
 #usd {
     position: fixed;
     top: 60px; /* Positionne en dessous de l'ID sous */
-    right: 350px; /* Décale davantage vers la gauche */
+    right: 450px; /* Décale davantage vers la gauche */
     z-index: 999;
     font-size: large;
     color: rgba(240, 240, 11, 0.818);
@@ -116,7 +118,7 @@
 #exchangeBtn {
     all: unset;
     position: fixed;
-    top: 200px;
+    top: 100px;
     left: 100px;
     z-index: 1000;
     cursor: pointer;

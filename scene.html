@@ -95,6 +95,10 @@
         <button id="doubleClickGain">🔁Augmente ton clic</button>
         <button id="doublePassiveIncome">🕒 Augmente ton revenu passif</button>
     </div>
+
+
+
+    
 </div>
 
   <div id="dresserPopup" class="popup">
@@ -110,6 +114,11 @@
     </p>
     <button class="popup-close" onclick="closePopup('bedPopup')">fermer</button>
   </div>
+  <!-- Bouton pour ouvrir la boutique -->
+<button id="openGiftShopBtn">🛍️ Boutique Cadeaux</button>
+
+
+
 
   <audio id="backgroundMusic" loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
@@ -122,6 +131,30 @@
   </audio>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Modale boutique -->
+<div id="giftShopModal" class="modal">
+  <div class="gift-modal-content">
+      <span id="closeGiftShopBtn" class="close">&times;</span>
+      <h2>🎁 Boutique Cadeaux (avec €)</h2>
+
+      <div class="shop-item">
+          <p>Babouche Le louche – 200 €</p>
+          <button onclick="buyItem('Peluche Bitcoin', 200)">Acheter</button>
+      </div>
+      <div class="shop-item">
+          <p> brick by brick we gonna make it ⌚ – 500 €</p>
+          <button onclick="buyItem('Montre Crypto', 500)">Acheter</button>
+      </div>
+      <div class="shop-item">
+          <p>La loyer de la darone  – 1000 €</p>
+          <button onclick="buyItem('Lingot d\'Or', 1000)">Acheter</button>
+      </div>
+
+      <h3>🎒 Inventaire</h3>
+      <ul id="inventoryList"></ul>
+  </div>
+</div>
  
   
 </body>

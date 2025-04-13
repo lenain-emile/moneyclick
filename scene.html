@@ -3,14 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>Les Clickes</title>
-  <link rel="stylesheet" href="./style/style.css">
+  <link rel="stylesheet" href="style/style.css">
   <script src="./script.js" defer></script>
   <link rel="stylesheet" href="./style/btc.css">
   <script src="./bitcoin.js" defer></script>
+  <script src="./algoniveau..js" defer></script>
 
 
 </head>
+
 <body>
+
+  <header>
+
+    <div id="level" style="position: absolute; top: 50px; left: 80px; background-color: white; padding: 10px; border-radius: 5px;">
+      Niveau : 1
+    </div>
+
+    <div id="counter" style="position: absolute; top: 10px; left: 130px; background-color: white; padding: 10px; border-radius: 5px;">
+      xp clique : 0
+    </div>
+
+    <button id="resetButton" style="position: absolute; top: 10px; left: 10px; background-color: white; padding: 10px; border-radius: 5px;">
+      Réinitialiser
+    </button>
+  </header>
   
   <button id="passiveBtn" style="display: none;">
     <p>Revenu passif</p>
@@ -50,7 +67,7 @@
       <div class="curtain-right"></div>
     </div>
     
-    <div class="bed interactive">
+    <div id="bed" class="bed interactive" style="cursor: pointer;">
       <div class="pillow"></div>
       <div class="blanket"></div>
     </div>
@@ -73,7 +90,7 @@
     
     <div class="character-shadow"></div>
     <div id="character">
-      <img src="./media/Can_You_Guess_These_Cartoon_Characters_By_Their_Outlines-removebg-preview.png" alt="Character">
+      <img src="media/Can_You_Guess_These_Cartoon_Characters_By_Their_Outlines-removebg-preview.png" alt="Character">
     </div>
     
     <div id="floor"></div>
@@ -95,10 +112,6 @@
         <button id="doubleClickGain">🔁Augmente ton clic</button>
         <button id="doublePassiveIncome">🕒 Augmente ton revenu passif</button>
     </div>
-
-
-
-    
 </div>
 
   <div id="dresserPopup" class="popup">
@@ -106,14 +119,20 @@
     <p>ici tu peux commencer à miner</p>
     <button class="popup-close" onclick="closePopup('dresserPopup')">fermer</button>
   </div>
+
+  <audio id="backgroundMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
   
-  <div id="bedPopup" class="popup">
-    <h2>Lit Confortable</h2>
-    <p>
-        ici tu peux te  reposer et acheter des items
-    </p>
-    <button class="popup-close" onclick="closePopup('bedPopup')">fermer</button>
-  </div>
+  <audio id="interactionSound">
+    <source src="https://cdn.freesound.org/previews/524/524934_7724898-lq.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ 
+  
   <!-- Bouton pour ouvrir la boutique -->
 <button id="openGiftShopBtn">🛍️ Boutique Cadeaux</button>
 

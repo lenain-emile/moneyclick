@@ -172,7 +172,13 @@ function setupRealShop() {
         });
     }
 
-    window.buyItem = function(itemName, price) {
+    window.buyItem = function(itemName, price, requiredLevel = 1) {
+        const levelValue = parseInt(localStorage.getItem('levelValue')) || 1; 
+
+    if (levelValue < requiredLevel) {
+        alert(`⛔ Vous devez être au niveau ${requiredLevel} pour acheter cet objet !`);
+        return;
+    }
         if (usd >= price) {
             usd -= price;
             inventory.push(itemName);
@@ -182,7 +188,7 @@ function setupRealShop() {
             updateInventoryDisplay();
             alert(`🎉 Vous avez acheté : ${itemName}`);
         } else {
-            alert("⛔ Pas assez d'euros !");
+            ("⛔ Pas assez d'euros !");
         }
     };
 

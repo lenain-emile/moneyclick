@@ -172,7 +172,7 @@ function setupRealShop() {
         });
     }
 
-    window.buyItem = function(itemName, price, requiredLevel = 1) {
+    window.buyItem = function(itemName, price, requiredLevel = 2) {
         const levelValue = parseInt(localStorage.getItem('levelValue')) || 1; 
 
     if (levelValue < requiredLevel) {
